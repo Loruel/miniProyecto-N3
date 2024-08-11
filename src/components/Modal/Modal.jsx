@@ -76,13 +76,23 @@ export default function Modal({ toggleModal, data, setStays, }) {
 
   const toggleModal2 = () => {
     setIsOpen2(!isOpen2)
+    setIsOpen3(false)
   }
 
   const [isOpen3, setIsOpen3] = useState(false)
 
   const toggleModal3 = () => {
     setIsOpen3(!isOpen3)
+    setIsOpen2(false)
   }
+
+
+  const selectorLocation = (location) => {
+    setSearchValues({ ...serchValues, city: location })
+    /* setIsOpen2(false) */
+  }
+
+  console.log(selectorLocation)
 
   //visual
 
@@ -98,20 +108,14 @@ export default function Modal({ toggleModal, data, setStays, }) {
 
         <nav className='navSelect'>
 
-          <div className='optionModal'>
+          <div className='optionModal' onClick={toggleModal2}>
             <p>LOCATION</p>
-            <select className='selectModal' name="city" onChange={changeState} value={serchValues.city} onClick={toggleModal2}>
-              <option value="">Select state</option>
-              <option value="Helsinki">Helsinki, Finland</option>
-              <option value="Turku">Turku, Finland</option>
-              <option value="Vaasa">Vaasa, Finland</option>
-              <option value="Oulu">Oulu, Finland</option>
-            </select>
+            <input className='selectModal' name="city" type="text" placeholder='Select state' onChange={changeState} value={serchValues.city} readOnly />
           </div>
 
           <div className='optionModal' onClick={toggleModal3}>
             <p>GUESTS</p>
-            <input className='inputModal' name='maxGuests' type="text" placeholder='Add guests' onChange={changeState} value={serchValues.maxGuests} />
+            <input className='inputModal' name='maxGuests' type="text" placeholder='Add guests' onChange={changeState} value={serchValues.maxGuests} /* readOnly */ />
           </div>
 
           <div className='optButtonModal'>
@@ -124,20 +128,20 @@ export default function Modal({ toggleModal, data, setStays, }) {
         </nav>
 
         <nav className='navOptions'>
-        <div className='divOptions'>
+          <div className='divOptions'>
 
-          {isOpen2 &&
-          <ModalLocation />
-          }
-  
-        </div>
-        <div className='divOptions2'>
+            {isOpen2 &&
+              <ModalLocation selectorLocation={selectorLocation} />
+            }
 
-        {isOpen3 &&
-          <ModalGuests />
-          }
+          </div>
+          <div className='divOptions2'>
 
-        </div>
+            {isOpen3 &&
+              <ModalGuests />
+            }
+
+          </div>
         </nav>
 
       </div>
