@@ -92,7 +92,9 @@ export default function Modal({ toggleModal, data, setStays, }) {
     /* setIsOpen2(false) */
   }
 
-  console.log(selectorLocation)
+  const sumaGuests = (adults, childrens) => {
+    setSearchValues({ ...serchValues, maxGuests: adults + childrens})
+  }
 
   //visual
 
@@ -115,7 +117,7 @@ export default function Modal({ toggleModal, data, setStays, }) {
 
           <div className='optionModal' onClick={toggleModal3}>
             <p>GUESTS</p>
-            <input className='inputModal' name='maxGuests' type="text" placeholder='Add guests' onChange={changeState} value={serchValues.maxGuests} /* readOnly */ />
+            <input className='inputModal' name='maxGuests' type="text" placeholder='Add guests' onChange={changeState} value={serchValues.maxGuests} readOnly />
           </div>
 
           <div className='optButtonModal'>
@@ -138,7 +140,7 @@ export default function Modal({ toggleModal, data, setStays, }) {
           <div className='divOptions2'>
 
             {isOpen3 &&
-              <ModalGuests />
+              <ModalGuests sumaGuests={sumaGuests}/>
             }
 
           </div>

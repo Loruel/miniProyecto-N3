@@ -43,7 +43,7 @@ export default function App() {
 
 
 
-            <HeaderState/>
+            <HeaderState stays={stays}/>
             {<States stays={stays}/>}
             <Pie />
         </>

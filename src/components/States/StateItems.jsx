@@ -15,7 +15,7 @@ export default function StateItems({ data: { photo, superHost, type, rating, tit
                     </h4>)
                 }
 
-                <h4 className="type">{type} . {`${beds} beds`}</h4>
+                <h4 className="type">{type}</h4>
                 <img className="star" src="../public/starr.svg" alt="" />
                 <h4 className="rating">{rating}</h4>
             </div>

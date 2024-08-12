@@ -1,9 +1,9 @@
 import React from 'react'
 
 
-export default function HeaderState() {
+export default function HeaderState({stays}) {
 
-    /* const cantidad = states.length; */
+    const cantidad = stays.length;
 
     return (
 
@@ -14,7 +14,7 @@ export default function HeaderState() {
                 </h2>
 
                 <p>
-                    {/* {cantidad} */} states
+                    {cantidad} states
                 </p>
             </main>
         </>
